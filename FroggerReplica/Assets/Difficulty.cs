@@ -1,41 +1,108 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Difficulty : MonoBehaviour
 {
-    public Button easy;
-    public Button intermediate;
-    public Button hard;
 
+    public Dropdown carSpeed;
+    public Dropdown carSpawn;
+    public Dropdown froggerSelection;
+    public Dropdown carSizeSelection;
 
-    void Start()
+    void Update()
     {
-        easy.onClick.AddListener(EasySelection);
-        intermediate.onClick.AddListener(IntermediateSelection);
-        hard.onClick.AddListener(HardSelection);
+        if (carSpeed.value == 0) {
+            SpeedEasySelection();
+        }
+
+        if (carSpeed.value == 1)
+        {
+            SpeedIntermediateSelection();
+        }
+
+        if (carSpeed.value == 2)
+        {
+            SpeedHardSelection();
+        }
+
+        if (carSpawn.value == 0)
+        {
+            SpawnEasySelection();
+        }
+
+        if (carSpawn.value == 1)
+        {
+            SpawnIntermediateSelection();
+        }
+
+        if (carSpawn.value == 2)
+        {
+            SpawnHardSelection();
+        }
+
+        if (froggerSelection.value == 0)
+        {
+            Frog.scale = .5f;
+        }
+
+        if (froggerSelection.value == 1)
+        {
+            Frog.scale = .75f;
+        }
+
+        if (froggerSelection.value == 2)
+        {
+            Frog.scale = 1.5f;
+        }
+
+        if (carSizeSelection.value == 0)
+        {
+            CarSpawner.scale = .5f;
+        }
+
+        if (carSizeSelection.value == 1)
+        {
+            CarSpawner.scale = .75f;
+        }
+
+        if (carSizeSelection.value == 2)
+        {
+            CarSpawner.scale = 1.5f;
+        }
     }
    
 
-    void EasySelection()
+    void SpeedEasySelection()
     {
         Car.minSpeed = 4f;
         Car.maxSpeed = 8f;
-        CarSpawner.spawnDelay = .6f;
     }
 
-    void IntermediateSelection()
+    void SpeedIntermediateSelection()
     {
         Car.minSpeed = 8f;
         Car.maxSpeed = 12f;
-        CarSpawner.spawnDelay = .4f;
     }
 
-    void HardSelection()
+    void SpeedHardSelection()
     {
         Car.minSpeed = 12f;
         Car.maxSpeed = 16f;
+    }
+    
+
+    void SpawnEasySelection()
+    {
+        CarSpawner.spawnDelay = .6f;
+    }
+
+    void SpawnIntermediateSelection()
+    {
+        CarSpawner.spawnDelay = .4f;
+    }
+
+    void SpawnHardSelection()
+    {
         CarSpawner.spawnDelay = .3f;
     }
 }

@@ -7,7 +7,7 @@ public class Goal : MonoBehaviour {
 	{
 		// Debug.Log("YOU WON!");
 		Score.CurrentScore += 100;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 }
